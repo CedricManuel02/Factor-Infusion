@@ -17,7 +17,7 @@ function App() {
     if (token && user.length === 0) {
       const getData = async () => {
         try {
-          const response = await axios.get("/user", {
+          const response = await axios.get("https://expensive-eel-coat.cyclic.cloud/api/v1/user", {
             headers: { Authorization: `Bearer ${token}` }
           });
           const users = [{_id: response.data.user._id, FullName: response.data.user.FullName}]
