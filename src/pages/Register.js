@@ -13,7 +13,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api/v1/register", {FullName,Email,Password,Hemophilia,Severity,HasInhibitor})
+      const response = await axios.post("/register", {FullName,Email,Password,Hemophilia,Severity,HasInhibitor})
       if(response.status === 200 ){
         setFullName("")
         setEmail("")

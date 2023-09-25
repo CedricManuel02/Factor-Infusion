@@ -14,7 +14,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
         try{
-          const response = await axios.post("http://localhost:3001/api/v1/login", {Email, Password}, {withCredentials: true})
+          const response = await axios.post("/login", {Email, Password}, {withCredentials: true})
           const users = [{_id: response.data.response._id, FullName: response.data.response.FullName}]
           if(response.status === 200){
             const token = Cookies.get("token")
