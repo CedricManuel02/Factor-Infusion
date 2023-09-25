@@ -25,7 +25,7 @@ function Infusion() {
     if(token_ || user.length > 0){
       const getData = async () => {
         try{
-        const { data } = await axios.get("/list",{params: { UserID: user[0]._id  }, headers: { Authorization: `Bearer ${token_}` }})
+        const { data } = await axios.get("https://mongo-db-hfbboczai-cedricmanuel02-gmailcom.vercel.app/api/v1/list",{params: { UserID: user[0]._id  }, headers: { Authorization: `Bearer ${token_}` }})
         setList(data)
         setDefault(data)
         }
@@ -51,7 +51,7 @@ function Infusion() {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.delete("/delete", {params:{ _id }, 
+        const response = await axios.delete("https://mongo-db-hfbboczai-cedricmanuel02-gmailcom.vercel.app/api/v1/delete", {params:{ _id }, 
           headers: {
             Authorization: `Bearer ${token_}`
           }

@@ -6,8 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { StateProvider } from './utils/StateProvider';
 import reducer, { initialState } from './utils/reducer';
-import axios from 'axios';
-axios.defaults.baseURL = 'https://mongo-db-hfbboczai-cedricmanuel02-gmailcom.vercel.app/api/v1';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

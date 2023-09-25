@@ -13,7 +13,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/register", {FullName,Email,Password,Hemophilia,Severity,HasInhibitor})
+      const response = await axios.post("https://mongo-db-hfbboczai-cedricmanuel02-gmailcom.vercel.app/api/v1/register", {FullName,Email,Password,Hemophilia,Severity,HasInhibitor})
       if(response.status === 200 ){
         setFullName("")
         setEmail("")
