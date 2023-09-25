@@ -15,6 +15,7 @@ function Login() {
     e.preventDefault();
         try{
           const response = await axios.post("https://shiny-tan-hippo.cyclic.cloud/api/v1/login", {Email, Password}, {withCredentials: true})
+          console.log(response)
           const users = [{_id: response.data.response._id, FullName: response.data.response.FullName}]
           if(response.status === 200){
             const token = Cookies.get("token")
