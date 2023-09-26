@@ -22,7 +22,7 @@ function Edit(props) {
              LotNumber,
              ExpirationDate
             }
-            const response = await axios.post("http://localhost:3001/api/v1/update", 
+            const response = await axios.post("https://sleepy-seal-sari.cyclic.cloud/api/v1/update", 
             {"_id": {_id} ,
             "set": { DateOfInfusion, ReasonForTreatment, Factor, QuantityInfuse, InfusionSite}}, 
             {headers: {
@@ -58,7 +58,7 @@ function Edit(props) {
         const getData = async () => {
             try{
                 const token_ = Cookies.get("token")
-                const response = await axios.get("http://localhost:3001/api/v1/view", {params:{_id: props.ID, UserID: user[0]._id}, 
+                const response = await axios.get("https://sleepy-seal-sari.cyclic.cloud/api/v1/view", {params:{_id: props.ID, UserID: user[0]._id}, 
                     headers: {
                       Authorization: `Bearer ${token_}`
                     }

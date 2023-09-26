@@ -19,7 +19,7 @@ function View(props) {
         try
         {
           const token_ = Cookies.get("token")
-            const response = await axios.get("http://localhost:3001/api/v1/view", {params:{_id: props.ID, UserID: user[0]._id},headers: {
+            const response = await axios.get("https://sleepy-seal-sari.cyclic.cloud/api/v1/view", {params:{_id: props.ID, UserID: user[0]._id},headers: {
               Authorization: `Bearer ${token_}`
             }})
             if(response.status === 200){

@@ -53,11 +53,7 @@ function Infusion() {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.delete("/delete", {params:{ _id }, 
-          headers: {
-            Authorization: `Bearer ${token_}`
-          }
-        })
+        const response = await axios.delete("/delete", {params:{ _id }, headers: {Authorization: `Bearer ${token_}`}})
         if(response){
           Swal.fire({
             icon: 'success',
