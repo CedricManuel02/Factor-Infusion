@@ -17,7 +17,7 @@ function Modals(props) {
         try{
             const UserID = user[0]._id
             const token_ = Cookies.get("token")
-            const response = await axios.post("http://localhost:3001/api/v1/create", 
+            const response = await axios.post("/create", 
             {DateOfInfusion, UserID, ReasonForTreatment, FactorManufacturer, LotNumber, ExpirationDate, QuantityInfuse, InfusionSite}, {
               headers: {
                 Authorization: `Bearer ${token_}`
