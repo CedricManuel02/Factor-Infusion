@@ -175,10 +175,17 @@ router.post("/login", async(req, res) => {
             const hashPassword = bcrypt.compareSync(Password, response[0].Password)
             const user = {_id: response[0]._id, FullName: response[0].FullName}
             if(hashPassword){
-                jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{}, (err, token) => {
-                    if(err) throw err
-                    res.status(200).cookie("token", token).json({response: user ,message: "Successfully signed in"})
-                })
+                jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {}, (err, token) => {
+                    if (err) {
+                      console.error("Error signing token:", err);
+                      return res.status(500).json({ message: "Server error" });
+                    }
+                    res.status(200).cookie("token", token, { secure: true }).json({
+                      token_: token,
+                      response: user,
+                      message: "Successfully signed in"
+                    });
+                  });
             }
             else{
                     res.status(422).json({ message: 'Invalid credentials' })

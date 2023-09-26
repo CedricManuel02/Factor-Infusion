@@ -21,9 +21,7 @@ function Navbar() {
   }
   const handleSignout = () => {
       Cookies.remove("token");
-      dispatch({ type: reducerCases.SET_USER, token: null, user: []});
-      navigate("/")
-      setShow(false)
+      dispatch({ type: reducerCases.SET_USER, token: null});
   }
   return (
     <nav>

@@ -8,6 +8,8 @@ import Edit from '../components/Edit'
 import Cookies from 'js-cookie'
 import { useStateProvider } from '../utils/StateProvider'
 import * as XLSX from 'xlsx/xlsx.mjs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Infusion() {
   const [modalShow, setModalShow] = useState(false)
   const [viewShow, setViewShow] = useState(false)
@@ -25,7 +27,7 @@ function Infusion() {
     if(token_ || user.length > 0){
       const getData = async () => {
         try{
-        const { data } = await axios.get("https://expensive-eel-coat.cyclic.cloud/api/v1/list",{params: { UserID: user[0]._id  }, headers: { Authorization: `Bearer ${token_}` }})
+        const { data } = await axios.get("/list",{params: { UserID: user[0]?._id  }, headers: { Authorization: `Bearer ${token_}` }})
         setList(data)
         setDefault(data)
         }
@@ -38,7 +40,7 @@ function Infusion() {
     else{
     navigate("/")
     }
-  },[user, refresh, dispatch])
+  },[user, refresh],dispatch)
   const handleDelete = async (_id) => {
     const token_ = Cookies.get("token")
     Swal.fire({
@@ -51,7 +53,7 @@ function Infusion() {
       confirmButtonText: 'Yes, delete it!'
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.delete("https://expensive-eel-coat.cyclic.cloud/api/v1/delete", {params:{ _id }, 
+        const response = await axios.delete("/delete", {params:{ _id }, 
           headers: {
             Authorization: `Bearer ${token_}`
           }
@@ -135,6 +137,7 @@ function Infusion() {
 
   return (
     <>
+    <ToastContainer/>
        <Modals
         show={modalShow}
         onHide={handleModalHide}

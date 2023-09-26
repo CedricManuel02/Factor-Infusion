@@ -8,17 +8,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [{},dispatch] = useStateProvider()
-  const [Email, setEmail] = useState("")
-  const [Password, setPassword] = useState("")
+  const [Email, setEmail] = useState("cedricmanuel02@gmail.com")
+  const [Password, setPassword] = useState("Cedric123!")
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
         try{
-          const response = await axios.post("https://expensive-eel-coat.cyclic.cloud/api/v1/login", {Email, Password}, {withCredentials: true})
-          const users = [{_id: response.data.response._id, FullName: response.data.response.FullName}]
+          const response = await toast.promise(axios.post("/login", { Email, Password }, { withCredentials: true }),{pending: 'Logging in...', success: 'Login successful!',error: 'Login failed. Please try again.'});
+          const users = [{token_: response.data.token_ ,_id: response.data.response._id, FullName: response.data.response.FullName}]
           if(response.status === 200){
-            const token = Cookies.get("token")
-            dispatch({ type: reducerCases.SET_USER, token: token, user: users});
+            Cookies.set("token", response.data.token_)
+            dispatch({ type: reducerCases.SET_USER, token: response.data.token_, user: users});
             navigate("/")
           }
           else{
