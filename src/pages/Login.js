@@ -19,6 +19,7 @@ function Login() {
           const users = [{_id: response.data.response._id, FullName: response.data.response.FullName}]
           if(response.status === 200){
             const token = Cookies.get("token")
+            console.log("token", token)
             dispatch({ type: reducerCases.SET_USER, token: token, user: users});
             navigate("/")
           }
