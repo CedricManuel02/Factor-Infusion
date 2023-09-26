@@ -8,8 +8,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Login() {
   const [{},dispatch] = useStateProvider()
-  const [Email, setEmail] = useState("cedricmanuel02@gmail.com")
-  const [Password, setPassword] = useState("Cedric123!")
+  const [Email, setEmail] = useState("")
+  const [Password, setPassword] = useState("")
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
